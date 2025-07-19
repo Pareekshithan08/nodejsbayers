@@ -8,12 +8,12 @@ resource "aws_ecs_task_definition" "app" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "256"
   memory                   = "512"
-  execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
+  execution_role_arn       = arn:aws:iam::539935451710:role/ecsTaskExecutionRoleHclBayerPat
 
   container_definitions = jsonencode([
     {
       name      = "node-app"
-      image     = var.ecr_image_url
+      image     = 539935451710.dkr.ecr.us-west-1.amazonaws.com/bayerhclpat:latest
       essential = true
       portMappings = [{
         containerPort = 80
@@ -45,7 +45,7 @@ resource "aws_ecs_service" "app" {
     security_groups  = [aws_security_group.ecs_service_sg.id]
   }
     load_balancer {
-        target_group_arn = aws_alb_target_group.app.arn
+        target_group_arn = arn:aws:elasticloadbalancing:us-west-1:539935451710:targetgroup/cb-target-group/7612f6c61bd64ae8
         container_name   = "node-app"
         container_port   = 80
     }
