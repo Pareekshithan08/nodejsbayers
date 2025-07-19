@@ -32,11 +32,11 @@ jobs:
         terraform_version: 1.6.6  # or latest you prefer
 
     - name: Terraform Init
-      run: 
+      run: |
         cd terraformdeployment
         terraform init
         terraform apply -auto-approve
-        
+
     - name: Force new ECS deployment
       run: |
         aws ecs update-service \
