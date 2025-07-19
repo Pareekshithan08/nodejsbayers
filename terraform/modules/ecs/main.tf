@@ -2,6 +2,11 @@ provider "aws" {
   region = "us-west-1"
 }
 
+variable "vpc_id" {
+  description = "The ID of the VPC to associate with resources in this module"
+  type        = string
+}
+
 resource "aws_ecs_cluster" "main" {
   name = "my-ecs-fargate-cluster"
   tags = {

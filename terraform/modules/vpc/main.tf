@@ -106,3 +106,8 @@ resource "aws_route_table" "private" {
     Name = "Private Route Table"
   }
 }
+
+output "vpc_id" {
+  value = aws_vpc.main.id
+  description = "The ID of the main VPC"
+}
