@@ -2,7 +2,7 @@
 FROM node:20-alpine
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /patient
 
 # Copy package.json and install dependencies
 COPY package*.json ./
