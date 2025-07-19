@@ -1,4 +1,4 @@
-name: Node.js Docker CI/CD
+name: Patient service 
 
 on:
   workflow_dispatch:
