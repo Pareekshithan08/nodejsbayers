@@ -8,7 +8,7 @@ variable "vpc_id" {
 }
 
 resource "aws_ecr_repository" "my_ecr_repo" {
-  name                 = "hclbayerpatient"  # Replace with your desired repository name
+  name                 = "hclbayerpatientpareek"  # Replace with your desired repository name
   image_tag_mutability = "IMMUTABLE" # Or "IMMUTABLE"
 
   image_scanning_configuration {
