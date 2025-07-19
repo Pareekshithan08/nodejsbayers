@@ -1,3 +1,12 @@
+provider "aws" {
+  region = "us-west-1"
+}
+
+variable "vpc_id" {
+  description = "The ID of the VPC to associate with resources in this module"
+  type        = string
+}
+
 resource "aws_alb" "app" {
 
     name        = "cb-load-balancer"
@@ -7,7 +16,7 @@ resource "aws_alb" "app" {
 
 resource "aws_alb_target_group" "app" {
     name        = "cb-target-group"
-    port        = 80
+    port        = 3000
     protocol    = "HTTP"
     vpc_id      = aws_vpc.main.id
     target_type = "ip"

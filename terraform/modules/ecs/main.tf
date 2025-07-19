@@ -14,6 +14,30 @@ resource "aws_ecs_cluster" "main" {
   }
 }
 
+resource "aws_ecs_task_definition" "patient_service" {
+  family                   = "patient-service-task"
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  cpu                      = "256"
+  memory                   = "512"
+  execution_role_arn      = aws_iam_role.ecs_task_execution_role.arn
+  task_role_arn            = aws_iam_role.ecs_task_execution_role.arn
+
+  container_definitions = jsonencode([
+    {
+      name      = "patient-service"
+      image     = "${aws_ecr_repository.patient.repository_url}:latest"
+      essential = true
+      portMappings = [
+        {
+          containerPort = 3000
+          protocol      = "tcp"
+        }
+      ]
+    }
+  ])
+}
+
 # resource "aws_ecs_cluster" "main" {
 #   name = "fargate-cluster"
 # }
