@@ -4,6 +4,7 @@ FROM node:20-alpine
 # Set the working directory
 WORKDIR /patient
 
+RUN npm init -y
 # Copy package.json and install dependencies
 COPY package*.json ./
 RUN npm install
