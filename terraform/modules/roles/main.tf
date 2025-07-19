@@ -9,7 +9,7 @@ variable "vpc_id" {
 
 
 resource "aws_iam_role" "ecs_task_execution_role_bayers" {
-  name = "ecsTaskExecutionRoleBayerHclPat"
+  name = "ecsTaskExecutionRoleHclBayerPat"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",

@@ -22,18 +22,11 @@ jobs:
         with:
           terraform_version: 1.0.10 
 
-      - name: Terraform Init
-        id: init
+      - name: Terraform 
         run: |
-          cd terraform
-          terraform init
-      - name: Terraform Plan
-        id: plan
-        run: |
-          cd terraform
-          terraform plan -out=tfplan
-      - name: Terraform Apply  
-        run: |
-          cd terraform
-          terraform apply -auto-approve tfplan
+            cd terraform
+            terraform init
+            terraform plan -out=tfplan
+            terraform apply -auto-approve tfplan
+      
       
