@@ -23,8 +23,8 @@ resource "aws_iam_role" "ecs_task_execution_role_bayers" {
   })
 }
 
-resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_bayer_hcl_policy" {
-  role       = aws_iam_role.ecs_task_execution_role.name
+resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_bayers_hcl_policy" {
+  role       = aws_iam_role.ecs_task_execution_role_bayers.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
