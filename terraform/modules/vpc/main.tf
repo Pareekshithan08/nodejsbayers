@@ -40,7 +40,7 @@ variable "availability_zones" {
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr_block
   tags = {
-    Name = "My VPC"
+    Name = "VPC BayerHclPat"
   }
 }
 
