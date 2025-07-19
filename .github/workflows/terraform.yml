@@ -20,7 +20,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.22.2 
+          terraform_version: 1.0.10 
 
       - name: Terraform Init
         id: init
