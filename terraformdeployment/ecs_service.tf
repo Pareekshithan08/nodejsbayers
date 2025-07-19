@@ -4,13 +4,13 @@ resource "aws_ecs_task_definition" "patient_service" {
   network_mode            = "awsvpc"
   cpu                     = "256"  # 0.25 vCPU
   memory                  = "512"  # 512 MiB
-  execution_role_arn      = aws_iam_role.ecs_task_execution_role.arn
-  task_role_arn           = aws_iam_role.ecs_task_execution_role.arn
+  execution_role_arn      = "arn:aws:iam::539935451710:role/ecsTaskExecutionRoleHclBayerPatientpareek"
+  task_role_arn           = "arn:aws:iam::539935451710:role/ecsTaskExecutionRoleHclBayerPatientpareek"
 
   container_definitions = jsonencode([
     {
       name      = "patient-service"
-      image     = "${aws_ecr_repository.patient.repository_url}:latest"
+      image     = "539935451710.dkr.ecr.us-west-1.amazonaws.com/hclbayerpatientpareek:latest"
       portMappings = [
         {
           containerPort = 3000
