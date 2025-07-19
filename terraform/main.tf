@@ -8,17 +8,17 @@ module "vpc" {
 
 module "ecr" {
   source = "./modules/ecr"
-  vpc_id = module.network.vpc_id
+    vpc_id = module.roles.vpc_id
 }
 
 module "ecs" {
   source = "./modules/ecs"
-  vpc_id = module.network.vpc_id
+    vpc_id = module.roles.vpc_id
 }
 
 module "iam" {
   source = "./modules/roles"
-  vpc_id = module.network.vpc_id
+    vpc_id = module.roles.vpc_id
 }
 
 # module "ecssecurity_groups" {
