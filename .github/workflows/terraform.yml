@@ -1,0 +1,42 @@
+name: Terraform Infrastructure Change Management Pipeline with GitHub Actions
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'terraform/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'terraform/**'
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.22.2 
+
+      - name: Terraform Init
+        id: init
+        run: |
+          cd terraform
+          terraform init
+      - name: Terraform Plan
+        id: plan
+        run: |
+          cd terraform
+          terraform plan -out=tfplan
+      - name: Terraform Apply
+        if: github.event_name == 'push'
+        run: |
+          cd terraform
+          terraform apply -auto-approve tfplan
+      
