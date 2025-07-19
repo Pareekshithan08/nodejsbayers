@@ -32,7 +32,7 @@ variable "private_subnet_cidr_blocks" {
 
 variable "availability_zones" {
   type    = list(string)
-  default = ["us-west-1a", "us-west-1b"] # Replace with your desired AZs
+  default = ["us-west-1a", "us-west-1c"] # Replace with your desired AZs
   description = "Availability Zones for the subnets"
 }
 
